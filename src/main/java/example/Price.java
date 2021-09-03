@@ -1,6 +1,6 @@
 package example;
 
-public class Price {
+public abstract class Price {
     private final int priceCode;
 
     public Price(int priceCode) {
@@ -11,24 +11,7 @@ public class Price {
         return priceCode;
     }
 
-    double getCharge(int daysRented) {
-        double charge = 0;
-        //determine amounts for rental line
-        switch (getPriceCode()) {
-            case Movie.REGULAR -> {
-                charge += 2;
-                if (daysRented > 2)
-                    charge += (daysRented - 2) * 1.5;
-            }
-            case Movie.NEW_RELEASE -> charge += daysRented * 3;
-            case Movie.CHILDRENS -> {
-                charge += 1.5;
-                if (daysRented > 3)
-                    charge += (daysRented - 3) * 1.5;
-            }
-        }
-        return charge;
-    }
+    abstract double getCharge(int daysRented);
 
     int frequentPoints(int daysRented) {
         // add frequent renter points

@@ -18,7 +18,7 @@ public class Movie {
         if (priceCode == REGULAR) return new RegularPrice();
         if (priceCode == CHILDRENS) return new ChildrensPrice();
         if (priceCode == NEW_RELEASE) return new NewReleasePrice();
-        return new Price(priceCode);
+        throw new RuntimeException("No priceCode found " + priceCode);
     }
 
     public String getTitle (){
