@@ -23,9 +23,8 @@ class Customer {
             //show figures for this rental
             result += "\t" + rental.getMovie().getTitle() + "\t" + rental.getCharge() + "\n";
         }
-        double totalAmount = getTotalCharge();
         //add footer lines
-        result += "Amount owed is " + totalAmount + "\n";
+        result += "Amount owed is " + getTotalCharge() + "\n";
         result += "You earned " + getTotalFrequentRenterPoints() + " frequent renter points";
         return result;
     }
