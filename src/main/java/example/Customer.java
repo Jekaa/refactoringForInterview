@@ -31,11 +31,7 @@ class Customer {
     }
 
     private double getTotalCharge() {
-        double totalAmount = 0;
-        for (Rental rental : rentals) {
-            totalAmount += rental.getCharge();
-        }
-        return totalAmount;
+        return rentals.stream().mapToDouble(Rental::getCharge).sum();
     }
 
     private int getTotalFrequentRenterPoints() {
