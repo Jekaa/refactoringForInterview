@@ -17,6 +17,7 @@ public class Movie {
     private Price createPrice(int priceCode) {
         if (priceCode == REGULAR) return new RegularPrice();
         if (priceCode == CHILDRENS) return new ChildrensPrice();
+        if (priceCode == NEW_RELEASE) return new NewReleasePrice();
         return new Price(priceCode);
     }
 
