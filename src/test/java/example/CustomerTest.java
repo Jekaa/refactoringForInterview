@@ -8,9 +8,9 @@ import static org.junit.Assert.assertEquals;
 
 public class CustomerTest {
 
-    public static final Movie REGULAR_MOVIE = new Movie("regular", Movie.REGULAR);
-    public static final Movie NEW_RELEASE_MOVIE = new Movie("new release", Movie.NEW_RELEASE);
-    public static final Movie MOVIE_FOR_CHILDREN = new Movie("children", Movie.CHILDRENS);
+    public static final Movie REGULAR_MOVIE = new Movie("regular", new RegularPrice());
+    public static final Movie NEW_RELEASE_MOVIE = new Movie("new release", new NewReleasePrice());
+    public static final Movie MOVIE_FOR_CHILDREN = new Movie("children", new ChildrensPrice());
 
     @Test
     public void whenRegularFilmRentedFor2Days_ShouldReturn2DollarsAnd1Point() {

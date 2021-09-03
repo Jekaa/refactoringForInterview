@@ -9,12 +9,12 @@ public class Movie {
     private final String title;
     private final Price price;
 
-    public Movie(String title, int priceCode) {
+    public Movie(String title, Price price) {
         this.title = title;
-        price = createPrice(priceCode);
+        this.price = price;
     }
 
-    private Price createPrice(int priceCode) {
+    public Price createPrice(int priceCode) {
         if (priceCode == REGULAR) return new RegularPrice();
         if (priceCode == CHILDRENS) return new ChildrensPrice();
         if (priceCode == NEW_RELEASE) return new NewReleasePrice();
