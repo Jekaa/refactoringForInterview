@@ -11,12 +11,17 @@ public class Movie {
 
     public Movie(String title, int priceCode) {
         this.title = title;
-        price = new Price(priceCode);
+        price = createPrice(priceCode);
+    }
+
+    private Price createPrice(int priceCode) {
+        if (priceCode == REGULAR) return new RegularPrice();
+        return new Price(priceCode);
     }
 
     public String getTitle (){
         return title;
-    };
+    }
 
     public Price getPrice() {
         return price;
