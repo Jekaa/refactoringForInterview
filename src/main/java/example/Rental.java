@@ -22,7 +22,7 @@ class Rental {
     }
 
     int getFrequentRenterPointsIncrement() {
-        return getMovie().getPrice().frequentPoints(getDaysRented());
+        return getMovie().getPrice().getFrequentRenterPointsIncrement(getDaysRented());
     }
 
 }
