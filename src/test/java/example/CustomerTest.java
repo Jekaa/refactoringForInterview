@@ -14,10 +14,11 @@ public class CustomerTest {
 
     @Test
     public void whenRegularFilmRentedFor2Days_ShouldReturn2DollarsAnd1Point() {
-        String expected = "Rental Record for CustomerName\n" +
-                "\tregular\t2.0\n" +
-                "Amount owed is 2.0\n" +
-                "You earned 1 frequent renter points";
+        String expected = """
+                Rental Record for CustomerName
+                \tregular\t2.0
+                Amount owed is 2.0
+                You earned 1 frequent renter points""";
 
         assertEquals(expected, getStatementFor(List.of(regularFilmRental(2))));
     }
@@ -28,10 +29,11 @@ public class CustomerTest {
 
     @Test
     public void whenRegularFilmRentedFor5Days_ShouldReturn6dot5DollarsAnd1Point() {
-        String expected = "Rental Record for CustomerName\n" +
-                "\tregular\t6.5\n" +
-                "Amount owed is 6.5\n" +
-                "You earned 1 frequent renter points";
+        String expected = """
+                Rental Record for CustomerName
+                \tregular\t6.5
+                Amount owed is 6.5
+                You earned 1 frequent renter points""";
 
         assertEquals(expected, getStatementFor(List.of(regularFilmRental(5))));
     }
@@ -42,10 +44,11 @@ public class CustomerTest {
 
     @Test
     public void whenNewReleaseFilmRentedFor8Days_ShouldReturn24DollarsAnd2Point() {
-        String expected = "Rental Record for CustomerName\n" +
-                "\tnew release\t24.0\n" +
-                "Amount owed is 24.0\n" +
-                "You earned 2 frequent renter points";
+        String expected = """
+                Rental Record for CustomerName
+                \tnew release\t24.0
+                Amount owed is 24.0
+                You earned 2 frequent renter points""";
 
         assertEquals(expected, getStatementFor(List.of(newReleaseRental())));
     }
@@ -56,10 +59,11 @@ public class CustomerTest {
 
     @Test
     public void whenFilmForChildrenRentedFor8Days_ShouldReturn9DollarsAnd1Point() {
-        String expected = "Rental Record for CustomerName\n" +
-                "\tchildren\t9.0\n" +
-                "Amount owed is 9.0\n" +
-                "You earned 1 frequent renter points";
+        String expected = """
+                Rental Record for CustomerName
+                \tchildren\t9.0
+                Amount owed is 9.0
+                You earned 1 frequent renter points""";
 
         assertEquals(expected, getStatementFor(List.of(movieForChildrenRental(8))));
     }
@@ -70,22 +74,24 @@ public class CustomerTest {
 
     @Test
     public void whenFilmForChildrenRentedFor2Days_ShouldReturn1n5DollarsAnd1Point() {
-        String expected = "Rental Record for CustomerName\n" +
-                "\tchildren\t1.5\n" +
-                "Amount owed is 1.5\n" +
-                "You earned 1 frequent renter points";
+        String expected = """
+                Rental Record for CustomerName
+                \tchildren\t1.5
+                Amount owed is 1.5
+                You earned 1 frequent renter points""";
 
         assertEquals(expected, getStatementFor(List.of(movieForChildrenRental(2))));
     }
 
     @Test
     public void whenAllFilmsTogether_ShouldConcatenateData() {
-        String expected = "Rental Record for CustomerName\n" +
-                "\tregular\t11.0\n" +
-                "\tnew release\t24.0\n" +
-                "\tchildren\t1.5\n" +
-                "Amount owed is 36.5\n" +
-                "You earned 4 frequent renter points";
+        String expected = """
+                Rental Record for CustomerName
+                \tregular\t11.0
+                \tnew release\t24.0
+                \tchildren\t1.5
+                Amount owed is 36.5
+                You earned 4 frequent renter points""";
 
         assertEquals(expected, getStatementFor(severalRentals()));
     }
