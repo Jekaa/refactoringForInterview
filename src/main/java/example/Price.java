@@ -11,7 +11,7 @@ public class Price {
         return priceCode;
     }
 
-    double charge(int daysRented) {
+    double getCharge(int daysRented) {
         double charge = 0;
         //determine amounts for rental line
         switch (getPriceCode()) {

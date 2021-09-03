@@ -16,6 +16,7 @@ public class Movie {
 
     private Price createPrice(int priceCode) {
         if (priceCode == REGULAR) return new RegularPrice();
+        if (priceCode == CHILDRENS) return new ChildrensPrice();
         return new Price(priceCode);
     }
 
