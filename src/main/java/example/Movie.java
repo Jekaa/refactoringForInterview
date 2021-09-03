@@ -20,4 +20,23 @@ public class Movie {
     public String getTitle (){
         return title;
     };
+
+    double charge(int daysRented) {
+        double charge = 0;
+        //determine amounts for rental line
+        switch (getPriceCode()) {
+            case REGULAR -> {
+                charge += 2;
+                if (daysRented > 2)
+                    charge += (daysRented - 2) * 1.5;
+            }
+            case NEW_RELEASE -> charge += daysRented * 3;
+            case CHILDRENS -> {
+                charge += 1.5;
+                if (daysRented > 3)
+                    charge += (daysRented - 3) * 1.5;
+            }
+        }
+        return charge;
+    }
 }

@@ -18,22 +18,7 @@ class Rental {
     }
 
     double getCharge() {
-        double charge = 0;
-        //determine amounts for rental line
-        switch (getMovie().getPriceCode()) {
-            case Movie.REGULAR -> {
-                charge += 2;
-                if (getDaysRented() > 2)
-                    charge += (getDaysRented() - 2) * 1.5;
-            }
-            case Movie.NEW_RELEASE -> charge += getDaysRented() * 3;
-            case Movie.CHILDRENS -> {
-                charge += 1.5;
-                if (getDaysRented() > 3)
-                    charge += (getDaysRented() - 3) * 1.5;
-            }
-        }
-        return charge;
+        return getMovie().charge(getDaysRented());
     }
 
     int getFrequentRenterPointsIncrement() {
