@@ -1,14 +1,14 @@
-package example;
+package example.price;
 
 public class NewReleasePrice extends Price {
 
     @Override
-    double getCharge(int daysRented) {
+    public double getCharge(int daysRented) {
         return daysRented * 3;
     }
 
     @Override
-    int getFrequentRenterPointsIncrement(int daysRented) {
+    public int getFrequentRenterPointsIncrement(int daysRented) {
         // add bonus for a two day new release rental
         if (daysRented > 1) {
             return 2;

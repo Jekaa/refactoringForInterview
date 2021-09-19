@@ -1,5 +1,7 @@
 package example;
 
+import example.price.Price;
+
 public class Movie {
     private final String title;
     private final Price price;

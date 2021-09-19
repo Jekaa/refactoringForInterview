@@ -1,5 +1,8 @@
 package example;
 
+import example.price.ChildrensPrice;
+import example.price.NewReleasePrice;
+import example.price.RegularPrice;
 import org.junit.Test;
 
 import java.util.List;

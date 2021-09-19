@@ -1,8 +1,10 @@
 package example;
 
-import java.util.List;
+import example.price.ChildrensPrice;
+import example.price.NewReleasePrice;
+import example.price.RegularPrice;
 
-import static example.Movie.*;
+import java.util.List;
 
 public class Main {
     public static final Movie REMBO = new Movie("Rembo", new RegularPrice());

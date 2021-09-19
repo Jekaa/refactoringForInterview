@@ -1,9 +1,9 @@
-package example;
+package example.price;
 
 public class RegularPrice extends Price {
 
     @Override
-    double getCharge(int daysRented) {
+    public double getCharge(int daysRented) {
         if (daysRented > 2) {
             return 2 + (daysRented - 2) * 1.5;
         }
