@@ -1,109 +1,60 @@
 package example;
 
-import example.price.ChildrensPrice;
-import example.price.NewReleasePrice;
-import example.price.RegularPrice;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
 
 public class CustomerTest {
 
-    public static final Movie REGULAR_MOVIE = new Movie("regular", new RegularPrice());
-    public static final Movie NEW_RELEASE_MOVIE = new Movie("new release", new NewReleasePrice());
-    public static final Movie MOVIE_FOR_CHILDREN = new Movie("children", new ChildrensPrice());
-
     @Test
-    public void whenRegularFilmRentedFor2Days_ShouldReturn2DollarsAnd1Point() {
-        String expected = """
-                Rental Record for CustomerName
-                \tregular\t2.0
-                Amount owed is 2.0
-                You earned 1 frequent renter points""";
-
-        assertEquals(expected, getStatementFor(List.of(regularFilmRental(2))));
-    }
-
-    private Rental regularFilmRental(int daysRented) {
-        return new Rental(REGULAR_MOVIE, daysRented);
-    }
-
-    @Test
-    public void whenRegularFilmRentedFor5Days_ShouldReturn6dot5DollarsAnd1Point() {
-        String expected = """
-                Rental Record for CustomerName
-                \tregular\t6.5
-                Amount owed is 6.5
-                You earned 1 frequent renter points""";
-
-        assertEquals(expected, getStatementFor(List.of(regularFilmRental(5))));
-    }
-
-    private String getStatementFor(List<Rental> rentals) {
-        return new Customer("CustomerName", rentals).statement();
-    }
-
-    @Test
-    public void whenNewReleaseFilmRentedFor8Days_ShouldReturn24DollarsAnd2Point() {
-        String expected = """
-                Rental Record for CustomerName
-                \tnew release\t24.0
-                Amount owed is 24.0
-                You earned 2 frequent renter points""";
-
-        assertEquals(expected, getStatementFor(List.of(newReleaseRental())));
-    }
-
-    private Rental newReleaseRental() {
-        return new Rental(NEW_RELEASE_MOVIE, 8);
-    }
-
-    @Test
-    public void whenFilmForChildrenRentedFor8Days_ShouldReturn9DollarsAnd1Point() {
-        String expected = """
-                Rental Record for CustomerName
-                \tchildren\t9.0
-                Amount owed is 9.0
-                You earned 1 frequent renter points""";
-
-        assertEquals(expected, getStatementFor(List.of(movieForChildrenRental(8))));
-    }
-
-    private Rental movieForChildrenRental(int daysRented) {
-        return new Rental(MOVIE_FOR_CHILDREN, daysRented);
-    }
-
-    @Test
-    public void whenFilmForChildrenRentedFor2Days_ShouldReturn1n5DollarsAnd1Point() {
-        String expected = """
-                Rental Record for CustomerName
-                \tchildren\t1.5
-                Amount owed is 1.5
-                You earned 1 frequent renter points""";
-
-        assertEquals(expected, getStatementFor(List.of(movieForChildrenRental(2))));
-    }
-
-    @Test
-    public void whenAllFilmsTogether_ShouldConcatenateData() {
+    public void whenSeveralRentalsPassedToPlainTextStatement_shouldSumChargesAndFrequentPoints() {
         String expected = """
                 Rental Record for CustomerName
                 \tregular\t11.0
                 \tnew release\t24.0
                 \tchildren\t1.5
                 Amount owed is 36.5
-                You earned 4 frequent renter points""";
+                You earned 4 frequent renter points """;
 
-        assertEquals(expected, getStatementFor(severalRentals()));
+        assertEquals(expected, createCustomer().statement());
     }
 
+    @Test
+    public void whenSeveralRentalsPassedToHtmlStatement_shouldSumChargesAndFrequentPoints() {
+        String expected = """
+                <H1>Rentals for <EM>CustomerName</EM></ H1><P>
+                regular: 11.0<BR>
+                new release: 24.0<BR>
+                children: 1.5<BR>
+                <P>You owe <EM>36.5</EM><P>
+                On this rental you earned <EM>4</EM> frequent renter points<P>""";
+
+        assertEquals(expected, createCustomer().htmlStatement());
+    }
+
+    private Customer createCustomer() {
+        return new Customer("CustomerName", severalRentals());
+    }
+
+
     private List<Rental> severalRentals() {
+
         return List.of(
-                regularFilmRental(8),
-                newReleaseRental(),
-                movieForChildrenRental(2));
+                mockRental(11., 1, "regular"),
+                mockRental(24., 2, "new release"),
+                mockRental(1.5, 1, "children"));
+    }
+
+    private Rental mockRental(double charge, int renterPoints, String title) {
+        final Rental rental = Mockito.mock(Rental.class, RETURNS_DEEP_STUBS);
+        when(rental.getMovie().getTitle()).thenReturn(title);
+        doReturn(charge).when(rental).getCharge();
+        doReturn(renterPoints).when(rental).getFrequentRenterPointsIncrement();
+        return rental;
     }
 
 }

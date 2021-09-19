@@ -1,6 +1,6 @@
 package example;
 
-class Rental {
+public class Rental {
     private final Movie movie;
     private final int daysRented;
 
@@ -17,11 +17,11 @@ class Rental {
         return movie;
     }
 
-    double getCharge() {
+    public double getCharge() {
         return getMovie().getPrice().getCharge(getDaysRented());
     }
 
-    int getFrequentRenterPointsIncrement() {
+    public int getFrequentRenterPointsIncrement() {
         return getMovie().getPrice().getFrequentRenterPointsIncrement(getDaysRented());
     }
 
