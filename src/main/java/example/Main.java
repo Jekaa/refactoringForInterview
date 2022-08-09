@@ -2,7 +2,7 @@ package example;
 
 import java.util.List;
 
-import static example.Movie.*;
+import static example.Movie.MovieType.*;
 
 public class Main {
     public static final Movie REMBO = new Movie("Rembo", REGULAR);

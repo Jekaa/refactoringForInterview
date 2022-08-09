@@ -4,13 +4,14 @@ import org.junit.Test;
 
 import java.util.List;
 
+import static example.Movie.MovieType.*;
 import static org.junit.Assert.assertEquals;
 
 public class CustomerTest {
 
-    public static final Movie REGULAR_MOVIE = new Movie("regular", Movie.REGULAR);
-    public static final Movie NEW_RELEASE_MOVIE = new Movie("new release", Movie.NEW_RELEASE);
-    public static final Movie MOVIE_FOR_CHILDREN = new Movie("children", Movie.CHILDRENS);
+    public static final Movie REGULAR_MOVIE = new Movie("regular", REGULAR);
+    public static final Movie NEW_RELEASE_MOVIE = new Movie("new release", NEW_RELEASE);
+    public static final Movie MOVIE_FOR_CHILDREN = new Movie("children", CHILDRENS);
 
     @Test
     public void whenRegularFilmRentedFor2Days_ShouldReturn2DollarsAnd1Point() {
