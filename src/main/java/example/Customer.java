@@ -2,8 +2,6 @@ package example;
 
 import java.util.List;
 
-import static example.Movie.MovieType.*;
-
 @SuppressWarnings("StringConcatenationInLoop")
 class Customer {
     private final String name;
@@ -34,7 +32,7 @@ class Customer {
     private int getFrequentRenterPoints() {
         int frequentRenterPoints = 0;
         for (Rental rental : rentals) {
-            frequentRenterPoints += getFrequentRenterPointsIncrement(rental);
+            frequentRenterPoints += rental.getFrequentRenterPointsIncrement();
         }
         return frequentRenterPoints;
     }
@@ -45,13 +43,6 @@ class Customer {
             totalAmount += rental.getThisAmount();
         }
         return totalAmount;
-    }
-
-    private int getFrequentRenterPointsIncrement(Rental rental) {
-        // add bonus for a two day new release rental
-        if ((rental.getMovie().getPriceCode() == NEW_RELEASE) && rental.getDaysRented() > 1)
-            return 2;
-        return 1;
     }
 
 
