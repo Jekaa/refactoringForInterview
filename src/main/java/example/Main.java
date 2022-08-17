@@ -3,6 +3,7 @@ package example;
 import java.util.List;
 
 import static example.MovieType.*;
+import static example.MovieTypeEnum.*;
 
 public class Main {
     public static final Movie REMBO = new Movie("Rembo", REGULAR);

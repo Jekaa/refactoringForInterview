@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static example.MovieType.*;
+import static example.MovieTypeEnum.*;
 import static org.junit.Assert.assertEquals;
 
 public class CustomerTest {

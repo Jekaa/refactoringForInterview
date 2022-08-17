@@ -1,5 +1,5 @@
 package example;
 
-public enum MovieType {
-    REGULAR, NEW_RELEASE, CHILDRENS
+public interface MovieType {
+    double getAmount(int daysRented);
 }

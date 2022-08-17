@@ -1,6 +1,6 @@
 package example;
 
-import static example.MovieType.NEW_RELEASE;
+import static example.MovieTypeEnum.NEW_RELEASE;
 
 class Rental {
     private final Movie movie;
@@ -20,22 +20,7 @@ class Rental {
     }
 
     double getThisAmount() {
-        double thisAmount = 0;
-        //determine amounts for rental line
-        switch (getMovie().getPriceCode()) {
-            case REGULAR -> {
-                thisAmount += 2;
-                if (getDaysRented() > 2)
-                    thisAmount += (getDaysRented() - 2) * 1.5;
-            }
-            case NEW_RELEASE -> thisAmount += getDaysRented() * 3;
-            case CHILDRENS -> {
-                thisAmount += 1.5;
-                if (getDaysRented() > 3)
-                    thisAmount += (getDaysRented() - 3) * 1.5;
-            }
-        }
-        return thisAmount;
+        return getMovie().getPriceCode().getAmount(getDaysRented());
     }
 
     int getFrequentRenterPointsIncrement() {
