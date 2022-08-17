@@ -2,13 +2,10 @@ package example;
 
 import java.util.List;
 
-import static example.MovieType.*;
-import static example.MovieTypeEnum.*;
-
 public class Main {
-    public static final Movie REMBO = new Movie("Rembo", REGULAR);
-    public static final Movie LOTR = new Movie("Lord of the Rings", NEW_RELEASE);
-    public static final Movie HARRY_POTTER = new Movie("Harry Potter", CHILDRENS);
+    public static final Movie REMBO = new Movie("Rembo", new RegularMovieType());
+    public static final Movie LOTR = new Movie("Lord of the Rings", new NewReleasesMovieType());
+    public static final Movie HARRY_POTTER = new Movie("Harry Potter", new ChildrensMovieType());
 
     public static void main(String[] args) {
         List<Rental> rentals = List.of(new Rental(REMBO, 1),
