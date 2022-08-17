@@ -1,6 +1,6 @@
 package example;
 
-import static example.Movie.MovieType.NEW_RELEASE;
+import static example.MovieType.NEW_RELEASE;
 
 class Rental {
     private final Movie movie;
