@@ -1,4 +1,6 @@
-package example;
+package example.price;
+
+import example.Movie;
 
 import static example.Movie.MovieType.NEW_RELEASE;
 
@@ -13,7 +15,7 @@ public class Price {
         return priceCode;
     }
 
-    double charge(int daysRented, Movie movie) {
+    public double getCharge(int daysRented, Movie movie) {
         double charge = 0;
         //determine amounts for rental line
         switch (movie.getPriceCode()) {
@@ -32,7 +34,7 @@ public class Price {
         return charge;
     }
 
-    int renterPoints(int daysRented, Movie movie) {
+    public int getRenterPoints(int daysRented, Movie movie) {
         int frequentRenterPoints = 0;
         // add frequent renter points
         frequentRenterPoints++;

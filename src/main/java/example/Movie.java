@@ -1,5 +1,8 @@
 package example;
 
+import example.price.Price;
+import example.price.RegularPrice;
+
 public class Movie {
     private final String title;
     private final Price price;
@@ -14,12 +17,19 @@ public class Movie {
 
     public Movie(String title, int priceCode) {
         this.title = title;
-        this.price = new Price(priceCode);
+        this.price = createPrice(priceCode);
+    }
+
+    private Price createPrice(int priceCode) {
+        if (priceCode == MovieType.REGULAR.ordinal()) {
+            return new RegularPrice();
+        }
+        return new Price(priceCode);
     }
 
     public MovieType getPriceCode() {
         if (price.getPriceCode() > MovieType.values().length) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(price.getPriceCode() + " not found");
         }
         return MovieType.values()[price.getPriceCode()];
     }
