@@ -1,9 +1,6 @@
 package example;
 
-import example.price.ChildrenPrice;
-import example.price.NewReleasePrice;
 import example.price.Price;
-import example.price.RegularPrice;
 
 public class Movie {
     private final String title;
@@ -17,29 +14,9 @@ public class Movie {
         REGULAR, NEW_RELEASE, CHILDRENS
     }
 
-    public Movie(String title, int priceCode) {
+    public Movie(String title, Price price) {
         this.title = title;
-        this.price = createPrice(priceCode);
-    }
-
-    private Price createPrice(int priceCode) {
-        if (priceCode == MovieType.REGULAR.ordinal()) {
-            return new RegularPrice();
-        }
-        if (priceCode == MovieType.NEW_RELEASE.ordinal()) {
-            return new NewReleasePrice();
-        }
-        if (priceCode == MovieType.CHILDRENS.ordinal()) {
-            return new ChildrenPrice();
-        }
-        throw new IllegalArgumentException(priceCode + " not found");
-    }
-
-    public MovieType getPriceCode() {
-        if (price.getPriceCode() > MovieType.values().length) {
-            throw new IllegalArgumentException(price.getPriceCode() + " not found");
-        }
-        return MovieType.values()[price.getPriceCode()];
+        this.price = price;
     }
 
     public String getTitle (){

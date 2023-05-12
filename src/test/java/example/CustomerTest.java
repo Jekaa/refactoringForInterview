@@ -1,5 +1,8 @@
 package example;
 
+import example.price.ChildrenPrice;
+import example.price.NewReleasePrice;
+import example.price.RegularPrice;
 import org.junit.Test;
 
 import java.util.List;
@@ -9,9 +12,9 @@ import static org.junit.Assert.assertEquals;
 
 public class CustomerTest {
 
-    public static final Movie REGULAR_MOVIE = new Movie("regular", REGULAR.ordinal());
-    public static final Movie NEW_RELEASE_MOVIE = new Movie("new release", NEW_RELEASE.ordinal());
-    public static final Movie MOVIE_FOR_CHILDREN = new Movie("children", CHILDRENS.ordinal());
+    public static final Movie REGULAR_MOVIE = new Movie("regular", new RegularPrice());
+    public static final Movie NEW_RELEASE_MOVIE = new Movie("new release", new NewReleasePrice());
+    public static final Movie MOVIE_FOR_CHILDREN = new Movie("children", new ChildrenPrice());
 
     @Test
     public void whenRegularFilmRentedFor2Days_ShouldReturn2DollarsAnd1Point() {

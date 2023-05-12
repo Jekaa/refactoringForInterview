@@ -3,14 +3,10 @@ package example.price;
 import example.Movie;
 
 public abstract class Price {
-    private final int priceCode;
+    private final Movie.MovieType movieType;
 
-    protected Price(int priceCode) {
-        this.priceCode = priceCode;
-    }
-
-    public int getPriceCode() {
-        return priceCode;
+    protected Price(Movie.MovieType movieType) {
+        this.movieType = movieType;
     }
 
     public abstract double getCharge(int daysRented, Movie movie);

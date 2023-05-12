@@ -4,7 +4,7 @@ import example.Movie;
 
 public class NewReleasePrice extends Price {
     public NewReleasePrice() {
-        super(Movie.MovieType.NEW_RELEASE.ordinal());
+        super(Movie.MovieType.NEW_RELEASE);
     }
 
     @Override

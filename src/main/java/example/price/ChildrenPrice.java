@@ -4,7 +4,7 @@ import example.Movie;
 
 public class ChildrenPrice extends Price {
     public ChildrenPrice() {
-        super(Movie.MovieType.CHILDRENS.ordinal());
+        super(Movie.MovieType.CHILDRENS);
     }
 
     @Override
