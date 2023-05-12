@@ -1,5 +1,7 @@
 package example;
 
+import example.price.ChildrenPrice;
+import example.price.NewReleasePrice;
 import example.price.Price;
 import example.price.RegularPrice;
 
@@ -23,6 +25,12 @@ public class Movie {
     private Price createPrice(int priceCode) {
         if (priceCode == MovieType.REGULAR.ordinal()) {
             return new RegularPrice();
+        }
+        if (priceCode == MovieType.NEW_RELEASE.ordinal()) {
+            return new NewReleasePrice();
+        }
+        if (priceCode == MovieType.CHILDRENS.ordinal()) {
+            return new ChildrenPrice();
         }
         return new Price(priceCode);
     }
