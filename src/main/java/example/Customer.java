@@ -25,7 +25,7 @@ class Customer {
         }
         //add footer lines
         result += "Amount owed is " + getTotalAmount() + "\n";
-        result += "You earned " + getTotalFrequentRenterPoints() + " frequent renter points";
+        result += "You earned " + getRenterPoints() + " frequent renter points";
         return result;
     }
 
@@ -37,7 +37,7 @@ class Customer {
         }
         //add footer lines
         result += "<P> Amount owed is <EM>" + getTotalAmount() + "</EN><P>\n";
-        result += "You earned <EM>" + getTotalFrequentRenterPoints() + "</EM> frequent renter points <P>";
+        result += "You earned <EM>" + getRenterPoints() + "</EM> frequent renter points <P>";
         return result;
     }
 
@@ -45,7 +45,7 @@ class Customer {
         return rentals.stream().mapToDouble(Rental::getCharge).sum();
     }
 
-    private int getTotalFrequentRenterPoints() {
-        return rentals.stream().mapToInt(Rental::getFrequentRenterPointsIncrement).sum();
+    private int getRenterPoints() {
+        return rentals.stream().mapToInt(Rental::getRenterPoints).sum();
     }
 }
