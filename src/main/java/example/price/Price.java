@@ -4,7 +4,7 @@ import example.Movie;
 
 import static example.Movie.MovieType.NEW_RELEASE;
 
-public class Price {
+public abstract class Price {
     private final int priceCode;
 
     public Price(int priceCode) {
@@ -15,24 +15,7 @@ public class Price {
         return priceCode;
     }
 
-    public double getCharge(int daysRented, Movie movie) {
-        double charge = 0;
-        //determine amounts for rental line
-        switch (movie.getPriceCode()) {
-            case REGULAR -> {
-                charge += 2;
-                if (daysRented > 2)
-                    charge += (daysRented - 2) * 1.5;
-            }
-            case NEW_RELEASE -> charge += daysRented * 3;
-            case CHILDRENS -> {
-                charge += 1.5;
-                if (daysRented > 3)
-                    charge += (daysRented - 3) * 1.5;
-            }
-        }
-        return charge;
-    }
+    public abstract double getCharge(int daysRented, Movie movie);
 
     public int getRenterPoints(int daysRented, Movie movie) {
         int frequentRenterPoints = 0;

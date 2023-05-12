@@ -32,7 +32,7 @@ public class Movie {
         if (priceCode == MovieType.CHILDRENS.ordinal()) {
             return new ChildrenPrice();
         }
-        return new Price(priceCode);
+        throw new IllegalArgumentException(priceCode + " not found");
     }
 
     public MovieType getPriceCode() {
