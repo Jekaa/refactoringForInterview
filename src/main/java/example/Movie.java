@@ -4,7 +4,7 @@ import static example.Movie.MovieType.NEW_RELEASE;
 
 public class Movie {
     private final String title;
-    private final MovieType priceCode;
+    private final Price price;
 
     double charge(int daysRented) {
         double charge = 0;
@@ -39,13 +39,16 @@ public class Movie {
         REGULAR, NEW_RELEASE, CHILDRENS
     }
 
-    public Movie(String title, MovieType priceCode) {
+    public Movie(String title, int priceCode) {
         this.title = title;
-        this.priceCode = priceCode;
+        this.price = new Price(priceCode);
     }
 
     public MovieType getPriceCode() {
-        return priceCode;
+        if (price.getPriceCode() > MovieType.values().length) {
+            throw new IllegalArgumentException();
+        }
+        return MovieType.values()[price.getPriceCode()];
     }
 
     public String getTitle (){

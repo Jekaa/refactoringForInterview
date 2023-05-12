@@ -5,9 +5,9 @@ import java.util.List;
 import static example.Movie.MovieType.*;
 
 public class Main {
-    public static final Movie REMBO = new Movie("Rembo", REGULAR);
-    public static final Movie LOTR = new Movie("Lord of the Rings", NEW_RELEASE);
-    public static final Movie HARRY_POTTER = new Movie("Harry Potter", CHILDRENS);
+    public static final Movie REMBO = new Movie("Rembo", REGULAR.ordinal());
+    public static final Movie LOTR = new Movie("Lord of the Rings", NEW_RELEASE.ordinal());
+    public static final Movie HARRY_POTTER = new Movie("Harry Potter", CHILDRENS.ordinal());
 
     public static void main(String[] args) {
         List<Rental> rentals = List.of(new Rental(REMBO, 1),
