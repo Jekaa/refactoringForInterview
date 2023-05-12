@@ -9,10 +9,6 @@ class Rental {
         this.daysRented = daysRented;
     }
 
-    public int getDaysRented() {
-        return daysRented;
-    }
-
     public Movie getMovie() {
         return movie;
     }
@@ -22,6 +18,6 @@ class Rental {
     }
 
     int getRenterPoints() {
-        return getMovie().getPrice().getRenterPoints(daysRented, movie);
+        return getMovie().getPrice().getRenterPoints(daysRented);
     }
 }
