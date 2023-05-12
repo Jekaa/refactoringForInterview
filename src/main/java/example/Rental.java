@@ -1,5 +1,7 @@
 package example;
 
+import static example.Movie.MovieType.NEW_RELEASE;
+
 class Rental {
     private final Movie movie;
     private final int daysRented;
@@ -34,5 +36,15 @@ class Rental {
             }
         }
         return charge;
+    }
+
+    int getFrequentRenterPointsIncrement() {
+        int frequentRenterPoints = 0;
+        // add frequent renter points
+        frequentRenterPoints++;
+        // add bonus for a two day new release rental
+        if ((getMovie().getPriceCode() == NEW_RELEASE) && getDaysRented() > 1)
+            frequentRenterPoints++;
+        return frequentRenterPoints;
     }
 }
